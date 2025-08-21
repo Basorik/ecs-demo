@@ -2,6 +2,7 @@
 #include "InputManager.h"
 #include "core/systems/PhysicsSystem.h"
 #include "core/systems/RenderSystem.h"
+#include <vector>
 typedef enum GameScreen 
 { 
 	LOGO = 0,

@@ -1,6 +1,6 @@
 #pragma once
 #include "ECS.h"
-#include <queue>
+#include <stack>
 #include <array>
 #include <cassert>
 
@@ -9,14 +9,15 @@ namespace Core
 	class EntityManager {
 	public:
 		EntityManager() {
-			for (Entity entity = 0; entity < MAX_ENTITIES; ++entity) {
+			// Initialize the queue with all possible entity IDs
+			for (Entity entity = MAX_ENTITIES - 1; entity != (Entity)-1; --entity) {
 				mAvailableEntities.push(entity);
 			}
 		}
 
 		Entity createEntity() {
 			assert(mLivingEntityCount < MAX_ENTITIES && "Max entities reached.");
-			Entity id = mAvailableEntities.front();
+			Entity id = mAvailableEntities.top();
 			mAvailableEntities.pop();
 			++mLivingEntityCount;
 
@@ -43,7 +44,7 @@ namespace Core
 		}
 
 	private:
-		std::queue<Entity> mAvailableEntities;
+		std::stack<Entity> mAvailableEntities;
 		std::array<Signature, MAX_ENTITIES> mSignatures{};
 		uint32_t mLivingEntityCount{};
 

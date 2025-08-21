@@ -5,6 +5,11 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(RunTests
     UtilsTest.cpp
+    LoggerTest.cpp
+    EntityManagerTest.cpp
+    ComponentManagerTest.cpp
+    SystemManagerTest.cpp
+    CoordinatorTest.cpp
 )
 
 target_link_libraries(RunTests
