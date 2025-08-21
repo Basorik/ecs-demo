@@ -10,6 +10,8 @@ project(ECSDemo VERSION 0.1
 add_subdirectory(Core)
 add_subdirectory(Game)
 
-
+if (NOT CMAKE_BUILD_TYPE)
+        set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, e.g. Debug, Release, RelWithDebInfo, MinSizeRel." FORCE)
+endif()
 
 
